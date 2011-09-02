@@ -1,0 +1,23 @@
+commit b11e60e25be2664872e3b32df21729abcdaf2bb1
+Author: Miroslav Lichvar <mlichvar@redhat.com>
+Date:   Tue Jun 8 17:39:49 2010 +0200
+
+    remove NLS code from snack (#599608)
+
+diff --git a/snackmodule.c b/snackmodule.c
+index d5dcff9..55d1a0a 100644
+--- a/snackmodule.c
++++ b/snackmodule.c
+@@ -1307,12 +1307,6 @@ static PyObject * pywstrlen(PyObject * s, PyObject * args)
+ void init_snack(void) {
+     PyObject * d, * m;
+ 
+-#ifdef ENABLE_NLS
+-    setlocale (LC_ALL, "");
+-    bindtextdomain (PACKAGE, LOCALEDIR);
+-    textdomain (PACKAGE);
+-#endif
+-
+     m = Py_InitModule("_snack", snackModuleMethods);
+     d = PyModule_GetDict(m);
+ 
